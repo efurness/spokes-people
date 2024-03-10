@@ -6,9 +6,20 @@ import "bulma/css/bulma.min.css";
 export default function Home() {
   const [positions, setPositions] = useState([]);
 
-  useEffect(() => {
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   getData()
+  //   setInterval( ()=> {
+  //     getData()
+  //   }, 60000
+  //     )
+  
+  // }, [])
+
+// const currentDate = new Date();
+// const thirtySecondsAgo = new Date(currentDate.getTime() - 30000);
+// console.log(isRecentlyUpdated(thirtySecondsAgo.toISOString()));
+
+
 
   useEffect(() => {
     const iframe = document.querySelector("iframe");
@@ -23,43 +34,47 @@ export default function Home() {
     });
   }
 
-  function getData() {
+  async function getData() {
     let bikes = [];
-    fetch('http://api.citybik.es/v2/networks/') 
-    .then(res => res.json()) // response to json
-    .then(function (response) {
-      var networks = response.networks; 
-      var usNetworks = networks.filter((network) => network.location.country === 'US'); // filters of US networks
-      var splice = usNetworks.slice(0, 4)
-      var api = "http://api.citybik.es";
-      for (var i = 0; i < splice.length; i++) {
-        const href = splice[i].href; // gets individual hrefs
-        fetch(api + href) 
-          .then(data => data.json())
-          .then(function (data) {
-            var station = data.network.stations;
-            for (var j = 0; j < station.length; j++) { //inner loop to search of individual stations
-              var name = station[j].name;
-              var lat = station[j].latitude;
-              var lon = station[j].longitude;
-              var emptySlots = station[j].empty_slots;
-              var availableBikes = station[j].free_bikes;
-              let info = { //takes infor to pass on
-                name, 
+    try {
+      const response = await fetch("http://api.citybik.es/v2/networks/");
+      const networks = await response.json();
+      const usNetworks = networks.networks
+        .filter((network) => network.location.country === "US")
+        .slice(0, 20);
+      const api = "http://api.citybik.es";
+      const fetchPromises = usNetworks.map((network) => {
+        return fetch(api + network.href)
+          .then((response) => response.json())
+          .then((data) => {
+            const stations = data.network.stations;
+            for (let j = 0; j < stations.length; j++) {
+              const {
+                name,
+                latitude: lat,
+                longitude: lon,
+                empty_slots: emptySlots,
+                free_bikes: availableBikes,
+                timestamp
+              } = stations[j];
+              bikes.push({
+                name,
                 location: { lat, lon },
                 emptySlots,
                 availableBikes,
-                uuid: createUUID()
-              };
-              bikes.push(info); // sends the info to our original empty array
+                timestamp,
+                uuid: createUUID(),
+              });
             }
-            return bikes;
-          })
-        }
-      // console.log(bikes);
+          });
+      });
+      await Promise.all(fetchPromises);
       setPositions(bikes);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   } 
-)}
+
 
   return (
     <div>

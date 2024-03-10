@@ -1,15 +1,33 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import { Icon } from "leaflet";
 // import LocationMarker from "./LocationMarker";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
 import { CREATE_FAVORITE } from "../utils/mutations";
 import "./index.css";
+function isRecentlyUpdated(timeStamp) {
+  const unixTimestamp = Date.parse(timeStamp);
+  const currentTime = Date.now();
+  const difference = currentTime - unixTimestamp;
+  if (difference < 45000) {
+    return true
+  }
+  else {
+    return false;
+  }
+
+}
+
 const MapView = ({ positions }) => {
-  const { loading, data } = useQuery(QUERY_USER);
-  const [addFavorite, { error }] = useMutation(CREATE_FAVORITE);
+  // const { loading, data } = useQuery(QUERY_USER);
+  // const [addFavorite, { error }] = useMutation(CREATE_FAVORITE);
 
-  const user = data?.me || data?.user || {};
-
+  // const user = data?.me || data?.user || {};
+  const bike = new Icon({
+    iconUrl: "./bike.png",
+    iconSize: [25, 25]
+  });
   const handleFavorite = async (event) => {
     event.preventDefault();
     const lat = parseFloat(event.target.dataset.lat);
@@ -18,13 +36,13 @@ const MapView = ({ positions }) => {
     console.log(lat, lon);
     //add favorite mutation
     try {
-      const {data} = await addFavorite({
-        variables: {
-          lat,
-          lon,
-          name
-        }
-      })
+      // const {data} = await addFavorite({
+      //   variables: {
+      //     lat,
+      //     lon,
+      //     name
+      //   }
+      // })
 
     } catch (err) {
       console.log(err);
@@ -35,8 +53,8 @@ const MapView = ({ positions }) => {
 
   return (
     <MapContainer
-      center={[37.78387, -99.044231]}
-      zoom={5}
+      center={[40.00811, -105.26385]}
+      zoom={14}
       scrollWheelZoom={true}
       className="container is-centered"
     >
@@ -44,18 +62,29 @@ const MapView = ({ positions }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {positions.map((position) => (
+      {positions.map((position) => {
+        let attribution = ""
+        if (isRecentlyUpdated(position.timestamp)){
+          attribution = "updated"
+        }
+        return(
         <Marker
+          attribution={attribution}
           position={[position.location.lat, position.location.lon]}
           key={position.uuid}
+          icon={bike}
+          
         >
           <Popup>
-            <h1 className="has-text-centered	">{position.name}</h1>
-            <br />
-            <h4 className="has-text-centered	">
-              Available bikes: {position.availableBikes}
-            </h4>
-            {user?.username && (
+            <h4 className="has-text-centered	">{position.name}</h4>
+            <h6 className="has-text-centered	">
+              Available bikes: {position.availableBikes}< br />
+              {/* Empty slots: {position.emptySlots}< br /> */}
+              Latitude: {position.location.lat}< br />
+              Longitude: {position.location.lon}< br />
+
+            </h6>
+            {/* {user?.username && (
               <button
                 data-lat={position.location.lat}
                 data-lon={position.location.lon}
@@ -65,10 +94,10 @@ const MapView = ({ positions }) => {
               >
                 Add to favorites
               </button>
-            )}
+            )} */}
           </Popup>
         </Marker>
-      ))}
+      )})}
     </MapContainer>
   );
 };
