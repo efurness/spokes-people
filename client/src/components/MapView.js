@@ -1,4 +1,10 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  CircleMarker,
+} from "react-leaflet";
 import L from "leaflet";
 import { Icon } from "leaflet";
 // import LocationMarker from "./LocationMarker";
@@ -11,12 +17,10 @@ function isRecentlyUpdated(timeStamp) {
   const currentTime = Date.now();
   const difference = currentTime - unixTimestamp;
   if (difference < 45000) {
-    return true
-  }
-  else {
+    return true;
+  } else {
     return false;
   }
-
 }
 
 const MapView = ({ positions }) => {
@@ -26,7 +30,7 @@ const MapView = ({ positions }) => {
   // const user = data?.me || data?.user || {};
   const bike = new Icon({
     iconUrl: "./bike.png",
-    iconSize: [25, 25]
+    iconSize: [25, 25],
   });
   const handleFavorite = async (event) => {
     event.preventDefault();
@@ -43,12 +47,9 @@ const MapView = ({ positions }) => {
       //     name
       //   }
       // })
-
     } catch (err) {
       console.log(err);
     }
-
-
   };
 
   return (
@@ -63,28 +64,35 @@ const MapView = ({ positions }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {positions.map((position) => {
-        let attribution = ""
-        if (isRecentlyUpdated(position.timestamp)){
-          attribution = "updated"
+        let polygon = <></>;
+        if (isRecentlyUpdated(position.timestamp)) {
+          polygon = (
+            <CircleMarker
+              center={[position.location.lat, position.location.lon]}
+              radius={24}
+              key={`circle_${position.uuid}`}
+            />
+          );
         }
-        return(
-        <Marker
-          attribution={attribution}
-          position={[position.location.lat, position.location.lon]}
-          key={position.uuid}
-          icon={bike}
-          
-        >
-          <Popup>
-            <h4 className="has-text-centered	">{position.name}</h4>
-            <h6 className="has-text-centered	">
-              Available bikes: {position.availableBikes}< br />
-              {/* Empty slots: {position.emptySlots}< br /> */}
-              Latitude: {position.location.lat}< br />
-              Longitude: {position.location.lon}< br />
-
-            </h6>
-            {/* {user?.username && (
+        return (
+          <>
+            <Marker
+              position={[position.location.lat, position.location.lon]}
+              key={position.uuid}
+              icon={bike}
+            >
+              <Popup>
+                <h4 className="has-text-centered	">{position.name}</h4>
+                <h6 className="has-text-centered	">
+                  Available bikes: {position.availableBikes}
+                  <br />
+                  {/* Empty slots: {position.emptySlots}< br /> */}
+                  Latitude: {position.location.lat}
+                  <br />
+                  Longitude: {position.location.lon}
+                  <br />
+                </h6>
+                {/* {user?.username && (
               <button
                 data-lat={position.location.lat}
                 data-lon={position.location.lon}
@@ -95,9 +103,12 @@ const MapView = ({ positions }) => {
                 Add to favorites
               </button>
             )} */}
-          </Popup>
-        </Marker>
-      )})}
+              </Popup>
+            </Marker>
+            {polygon}
+          </>
+        );
+      })}
     </MapContainer>
   );
 };

@@ -1,0 +1,13 @@
+path.leaflet-interactive {
+  animation: glow 1s ease forwards;
+  opacity: 1;
+}
+
+@keyframes glow {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

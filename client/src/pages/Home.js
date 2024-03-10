@@ -1,37 +1,36 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import MapView from "../components/MapView";
 import "bulma/css/bulma.min.css";
-
+import "./index.css";
 
 export default function Home() {
   const [positions, setPositions] = useState([]);
 
-  // useEffect(() => {
-  //   getData()
-  //   setInterval( ()=> {
-  //     getData()
-  //   }, 60000
-  //     )
-  
-  // }, [])
+  useEffect(() => {
+    getData();
+    setInterval(() => {
+      getData();
+    }, 60000);
+  }, []);
 
-// const currentDate = new Date();
-// const thirtySecondsAgo = new Date(currentDate.getTime() - 30000);
-// console.log(isRecentlyUpdated(thirtySecondsAgo.toISOString()));
-
-
+  // const currentDate = new Date();
+  // const thirtySecondsAgo = new Date(currentDate.getTime() - 30000);
+  // console.log(isRecentlyUpdated(thirtySecondsAgo.toISOString()));
 
   useEffect(() => {
     const iframe = document.querySelector("iframe");
     iframe?.remove();
   }, [positions]);
-  
+
   function createUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (Math.random() * 16) | 0,
-        v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        var r = (Math.random() * 16) | 0,
+          v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+    );
   }
 
   async function getData() {
@@ -49,20 +48,13 @@ export default function Home() {
           .then((data) => {
             const stations = data.network.stations;
             for (let j = 0; j < stations.length; j++) {
-              const {
-                name,
-                latitude: lat,
-                longitude: lon,
-                empty_slots: emptySlots,
-                free_bikes: availableBikes,
-                timestamp
-              } = stations[j];
+              const station = stations[j];
               bikes.push({
-                name,
-                location: { lat, lon },
-                emptySlots,
-                availableBikes,
-                timestamp,
+                name: station.name,
+                location: { lat: station.latitude, lon: station.longitude },
+                emptySlots: station.empty_slots,
+                availableBikes: station.free_bikes,
+                timestamp: stations[j].timestamp,
                 uuid: createUUID(),
               });
             }
@@ -73,8 +65,7 @@ export default function Home() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  } 
-
+  }
 
   return (
     <div>
@@ -83,13 +74,16 @@ export default function Home() {
           <p className="title has-text-light">Spokes People</p>
         </div>
       </section>
-     
+
       <div className="container">
         <div className="title is-parent">
           <article className="title is-child notification is-info-light">
             <div className="content">
               <p className="title ">Find bikes near you!</p>
-              <div className="container"> <MapView positions={positions} /></div>
+              <div className="container">
+                {" "}
+                <MapView positions={positions} />
+              </div>
             </div>
           </article>
         </div>
@@ -99,8 +93,14 @@ export default function Home() {
           <p>
             CSS by
             <strong className="has-text-light"> Bulma</strong> site by{" "}
-            <a className="has-text-primary" href="https://github.com/bward3/spokes-people"> Group 4-Project 3</a>. July
-            2022.
+            <a
+              className="has-text-primary"
+              href="https://github.com/bward3/spokes-people"
+            >
+              {" "}
+              Group 4-Project 3
+            </a>
+            . July 2022.
           </p>
         </div>
       </footer>
