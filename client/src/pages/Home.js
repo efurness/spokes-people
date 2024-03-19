@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import MapView from "../components/MapView";
 import "bulma/css/bulma.min.css";
 import "./index.css";
+// import { stat } from "fs";
 
 export default function Home() {
   const [positions, setPositions] = useState([]);
-
+  const [freeBikes, _setFreeBikes] = useState({});
   useEffect(() => {
     getData();
     setInterval(() => {
       getData();
-    }, 60000);
+    }, 10000);
   }, []);
+
 
   // const currentDate = new Date();
   // const thirtySecondsAgo = new Date(currentDate.getTime() - 30000);
@@ -43,14 +45,28 @@ export default function Home() {
         .slice(0, 20);
       const api = "http://api.citybik.es";
       const fetchPromises = usNetworks.map((network) => {
+        if (network.id !== "boulder") return;
         return fetch(api + network.href)
           .then((response) => response.json())
           .then((data) => {
             const stations = data.network.stations;
             for (let j = 0; j < stations.length; j++) {
               const station = stations[j];
-              bikes.push({
+              let count = "noChange";
+              if (freeBikes[station.name]) {
+                if (station.free_bikes > freeBikes[station.name]) {
+                  count = "increase"
+                }
+                if (station.free_bikes < freeBikes[station.name]) {
+                  count = "decrease"
+                }
+              }
+              freeBikes[station.name] = station.free_bikes;
+              if(count === "increase" || count === "decrease") {
+                console.log(count);
+             }              bikes.push({
                 name: station.name,
+                count: count,
                 location: { lat: station.latitude, lon: station.longitude },
                 emptySlots: station.empty_slots,
                 availableBikes: station.free_bikes,

@@ -5,7 +5,6 @@ import {
   Popup,
   CircleMarker,
 } from "react-leaflet";
-import L from "leaflet";
 import { Icon } from "leaflet";
 // import LocationMarker from "./LocationMarker";
 import { useQuery, useMutation } from "@apollo/client";
@@ -65,12 +64,20 @@ const MapView = ({ positions }) => {
       />
       {positions.map((position) => {
         let polygon = <></>;
-        if (isRecentlyUpdated(position.timestamp)) {
+        if (position.count === "increase" || position.count === "decrease") {
+          let color = "";
+        if(position.count === "increase") {
+            color = "green";
+}
+        if(position.count === "decrease") {
+          color = "red";
+}
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
               radius={24}
               key={`circle_${position.uuid}`}
+              pathOptions={{color:color}}
             />
           );
         }
