@@ -66,18 +66,18 @@ const MapView = ({ positions }) => {
         let polygon = <></>;
         if (position.count === "increase" || position.count === "decrease") {
           let color = "";
-        if(position.count === "increase") {
+          if (position.count === "increase") {
             color = "green";
-}
-        if(position.count === "decrease") {
-          color = "red";
-}
+          }
+          if (position.count === "decrease") {
+            color = "red";
+          }
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
               radius={24}
               key={`circle_${position.uuid}`}
-              pathOptions={{color:color}}
+              pathOptions={{ color: color }}
             />
           );
         }
@@ -88,7 +88,7 @@ const MapView = ({ positions }) => {
               key={position.uuid}
               icon={bike}
             >
-              <Popup>
+              <Popup key={`popup_${position.uuid}`}>
                 <h4 className="has-text-centered	">{position.name}</h4>
                 <h6 className="has-text-centered	">
                   Available bikes: {position.availableBikes}

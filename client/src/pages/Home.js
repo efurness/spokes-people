@@ -6,14 +6,14 @@ import "./index.css";
 
 export default function Home() {
   const [positions, setPositions] = useState([]);
-  const [freeBikes, _setFreeBikes] = useState({});
+  const [freeBikes, setFreeBikes] = useState({});
+  // let freeBikes = [];
   useEffect(() => {
     getData();
     setInterval(() => {
       getData();
     }, 10000);
   }, []);
-
 
   // const currentDate = new Date();
   // const thirtySecondsAgo = new Date(currentDate.getTime() - 30000);
@@ -55,16 +55,15 @@ export default function Home() {
               let count = "noChange";
               if (freeBikes[station.name]) {
                 if (station.free_bikes > freeBikes[station.name]) {
-                  count = "increase"
+                  count = "increase";
                 }
                 if (station.free_bikes < freeBikes[station.name]) {
-                  count = "decrease"
+                  count = "decrease";
                 }
               }
               freeBikes[station.name] = station.free_bikes;
-              if(count === "increase" || count === "decrease") {
-                console.log(count);
-             }              bikes.push({
+              setFreeBikes(freeBikes);
+              bikes.push({
                 name: station.name,
                 count: count,
                 location: { lat: station.latitude, lon: station.longitude },
