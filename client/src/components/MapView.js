@@ -27,10 +27,21 @@ const MapView = ({ positions }) => {
   // const [addFavorite, { error }] = useMutation(CREATE_FAVORITE);
 
   // const user = data?.me || data?.user || {};
-  const bike = new Icon({
-    iconUrl: "./bike.png",
+  let icon;
+  const bikeBlue = new Icon({
+    iconUrl: "./bikeBlue.png",
     iconSize: [25, 25],
   });
+    const bikeRed = new Icon({
+    iconUrl: "./bikeRed.png",
+    iconSize: [25, 25],
+  });
+
+  const bikeGreen = new Icon({
+    iconUrl: "./bikeGreen.png",
+    iconSize: [25, 25],
+  });
+
   const handleFavorite = async (event) => {
     event.preventDefault();
     const lat = parseFloat(event.target.dataset.lat);
@@ -59,11 +70,22 @@ const MapView = ({ positions }) => {
       className="container is-centered"
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+       <ul> <li><strong>6 +<img src="./greendropsm.png"> up to 5<img src="./lightbluesm.png"> 0 bikes<img src="./bikesm.png"></strong</li></ul>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {positions.map((position) => {
         let polygon = <></>;
+      if (position.availableBikes === 0) {
+          icon = bikeRed
+        }
+      if (position.availableBikes <= 5 && position.availableBikes > 0) {
+          icon = bikeBlue
+        }
+      if (position.availableBikes >= 6) {
+          icon = bikeGreen
+        }
+
         if (position.count === "increase" || position.count === "decrease") {
           let color = "";
           if (position.count === "increase") {
@@ -72,6 +94,8 @@ const MapView = ({ positions }) => {
           if (position.count === "decrease") {
             color = "red";
           }
+
+       
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
@@ -86,7 +110,7 @@ const MapView = ({ positions }) => {
             <Marker
               position={[position.location.lat, position.location.lon]}
               key={position.uuid}
-              icon={bike}
+              icon={icon}
             >
               <Popup key={`popup_${position.uuid}`}>
                 <h4 className="has-text-centered	">{position.name}</h4>
@@ -121,3 +145,4 @@ const MapView = ({ positions }) => {
 };
 
 export default MapView;
+

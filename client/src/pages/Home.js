@@ -61,6 +61,7 @@ export default function Home() {
                   count = "decrease";
                 }
               }
+              
               freeBikes[station.name] = station.free_bikes;
               setFreeBikes(freeBikes);
               bikes.push({
@@ -86,7 +87,7 @@ export default function Home() {
     <div>
       <section className="hero has-background-info is-align-items-center">
         <div className="hero-body">
-          <p className="title has-text-light">Spokes People</p>
+          <p className="title has-text-light">Spokes Boulder</p>
         </div>
       </section>
 
@@ -110,12 +111,12 @@ export default function Home() {
             <strong className="has-text-light"> Bulma</strong> site by{" "}
             <a
               className="has-text-primary"
-              href="https://github.com/bward3/spokes-people"
+              href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              Group 4-Project 3
+              Project by Ellen Furness
             </a>
-            . July 2022.
+            . March 2024.
           </p>
         </div>
       </footer>
