@@ -71,7 +71,7 @@ const MapView = ({ positions }) => {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
-       <ul> <li><strong>6 +<img src="./greendropsm.png"> up to 5<img src="./lightbluesm.png"> 0 bikes<img src="./bikesm.png"></strong</li></ul>'
+       <ul> <li><strong>6 +<img src="./bikeGreenSm.png"> up to 5<img src="./bikeBlueSm.png"> 0 bikes<img src="./bikeRedSm.png"></strong</li></ul>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {positions.map((position) => {
@@ -89,10 +89,10 @@ const MapView = ({ positions }) => {
         if (position.count === "increase" || position.count === "decrease") {
           let color = "";
           if (position.count === "increase") {
-            color = "purple";
+            color = "green";
           }
           if (position.count === "decrease") {
-            color = "yellow";
+            color = "red";
           }
 
        
