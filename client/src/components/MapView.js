@@ -99,7 +99,7 @@ const MapView = ({ positions }) => {
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
-              radius={20}
+              radius={10}
               key={`circle_${position.uuid}`}
               pathOptions={{ color: color }}
             />

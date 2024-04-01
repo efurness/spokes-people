@@ -45,7 +45,8 @@ export default function Home() {
         .slice(0, 20);
       const api = "http://api.citybik.es";
       const fetchPromises = usNetworks.map((network) => {
-        if (network.id !== "boulder") return;
+        if (network.id !== "boulder" && network.id !== "denver") return;
+
         return fetch(api + network.href)
           .then((response) => response.json())
           .then((data) => {
