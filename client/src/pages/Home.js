@@ -38,12 +38,12 @@ export default function Home() {
   async function getData() {
     let bikes = [];
     try {
-      const response = await fetch("http://api.citybik.es/v2/networks/");
+      const response = await fetch("https://api.citybik.es/v2/networks/");
       const networks = await response.json();
       const usNetworks = networks.networks
         .filter((network) => network.location.country === "US")
         .slice(0, 20);
-      const api = "http://api.citybik.es";
+      const api = "https://api.citybik.es";
       const fetchPromises = usNetworks.map((network) => {
         if (network.id !== "boulder" && network.id !== "denver") return;
 
