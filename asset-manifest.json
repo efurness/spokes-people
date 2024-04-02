@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spokes-people/static/css/main.8c71af95.css",
+    "main.js": "/spokes-people/static/js/main.fd31c18e.js",
+    "index.html": "/spokes-people/index.html",
+    "main.8c71af95.css.map": "/spokes-people/static/css/main.8c71af95.css.map",
+    "main.fd31c18e.js.map": "/spokes-people/static/js/main.fd31c18e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c71af95.css",
+    "static/js/main.fd31c18e.js"
+  ]
+}
