@@ -118,9 +118,9 @@ export default function Home() {
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              Project by Ellen Furness
+              Current project by Ellen Furness
             </a>
-            . March 2024.
+            March 2024
           </p>
         </div>
       </footer>
