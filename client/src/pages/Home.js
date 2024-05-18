@@ -12,7 +12,7 @@ export default function Home() {
     getData();
     setInterval(() => {
       getData();
-    }, 10000);
+    }, 5000);
   }, []);
 
   // const currentDate = new Date();
@@ -88,7 +88,10 @@ export default function Home() {
     <div>
       <section className="hero has-background-info is-align-items-center">
         <div className="hero-body">
-          <p className="title has-text-light">Spokes Boulder</p>
+          <p className="title has-text-light">Spokes         <img src="/coolBike.png" alt="bike" width="100" height="120"></img>Boulder</p>
+ 
+          
+          
         </div>
       </section>
 
