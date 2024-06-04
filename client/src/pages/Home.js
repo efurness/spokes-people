@@ -62,7 +62,7 @@ export default function Home() {
                   count = "decrease";
                 }
               }
-              
+
               freeBikes[station.name] = station.free_bikes;
               setFreeBikes(freeBikes);
               bikes.push({
@@ -88,10 +88,11 @@ export default function Home() {
     <div>
       <section className="hero has-background-info is-align-items-center">
         <div className="hero-body">
-          <p className="title has-text-light">Spokes<img src="./coolBike.png" alt="bike" width="80" height="100"></img>Boulder</p>
- 
-          
-          
+          <p className="title has-text-light">
+            Spokes
+            <img src="./coolBike.png" alt="bike" width="80" height="100"></img>
+            Boulder
+          </p>
         </div>
       </section>
 

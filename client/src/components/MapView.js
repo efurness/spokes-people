@@ -32,7 +32,7 @@ const MapView = ({ positions }) => {
     iconUrl: "./bikePurple.png",
     iconSize: [25, 25],
   });
-    const bikeRed = new Icon({
+  const bikeRed = new Icon({
     iconUrl: "./bikeRed.png",
     iconSize: [25, 25],
   });
@@ -76,14 +76,14 @@ const MapView = ({ positions }) => {
       />
       {positions.map((position) => {
         let polygon = <></>;
-      if (position.availableBikes === 0) {
-          icon = bikeRed
+        if (position.availableBikes === 0) {
+          icon = bikeRed;
         }
-      if (position.availableBikes <= 5 && position.availableBikes > 0) {
-          icon = bikeBlue
+        if (position.availableBikes <= 5 && position.availableBikes > 0) {
+          icon = bikeBlue;
         }
-      if (position.availableBikes >= 6) {
-          icon = bikeGreen
+        if (position.availableBikes >= 6) {
+          icon = bikeGreen;
         }
 
         if (position.count === "increase" || position.count === "decrease") {
@@ -95,7 +95,6 @@ const MapView = ({ positions }) => {
             color = "red";
           }
 
-       
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
@@ -145,4 +144,3 @@ const MapView = ({ positions }) => {
 };
 
 export default MapView;
-

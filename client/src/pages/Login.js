@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
-import Signup from "../pages/Signup"
+import Signup from "../pages/Signup";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -53,8 +53,9 @@ const Login = (props) => {
         <h4 className="title">Login</h4>
         <div className="">
           {data ? (
-            <p>Success! You may now head {" "}
-            <Link to="/Profile">to your profile page.</Link>
+            <p>
+              Success! You may now head{" "}
+              <Link to="/Profile">to your profile page.</Link>
             </p>
           ) : (
             <form onSubmit={handleFormSubmit}>
@@ -90,7 +91,7 @@ const Login = (props) => {
         </div>
       </div>
       <div className="content">
-            <Signup />
+        <Signup />
       </div>
     </div>
   );

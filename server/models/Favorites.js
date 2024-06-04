@@ -22,7 +22,7 @@ const favoritesSchema = new Schema(
       getters: true,
     },
     id: false,
-  },
+  }
 );
 
 module.exports = favoritesSchema;

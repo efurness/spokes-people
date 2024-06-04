@@ -4,12 +4,12 @@ path.leaflet-interactive {
 }
 
 @keyframes fade {
-  from { opacity: 0.5; } 
-  
+  from {
+    opacity: 0.5;
+  }
 }
 
 .footer {
   padding-bottom: 1rem;
   padding-top: 1.5rem;
-
 }
