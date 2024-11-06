@@ -12,7 +12,7 @@ export default function Home() {
     getData();
     setInterval(() => {
       getData();
-    }, 5000);
+    }, 3 * 60 * 1000);
   }, []);
 
   // const currentDate = new Date();
@@ -119,9 +119,9 @@ export default function Home() {
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              Current project by Ellen Furness
+              &nbsp; Current project by Ellen Furness
             </a>
-            March 2024
+            &nbsp; 2024
           </p>
         </div>
       </footer>

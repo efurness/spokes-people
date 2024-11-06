@@ -89,10 +89,10 @@ const MapView = ({ positions }) => {
         if (position.count === "increase" || position.count === "decrease") {
           let color = "";
           if (position.count === "increase") {
-            color = "green";
+            color = "#4fff33";
           }
           if (position.count === "decrease") {
-            color = "red";
+            color = "#ff3368";
           }
 
           polygon = (
