@@ -70,7 +70,7 @@ const MapView = ({ positions }) => {
       className="container is-centered"
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors<li>Bike back <img src="./greenCircle.png">&nbsp;&nbsp; | &nbsp; Bike out &nbsp; <img src="./redCircle.png">&nbsp;</li>
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors<li>Bike back&nbsp;&nbsp; <img src="./greenCircle.png">&nbsp;&nbsp; | &nbsp; Bike out &nbsp; <img src="./redCircle.png">&nbsp;</li>
        <ul> <li><strong>6 +<img src="./bikeGreenSm.png">&nbsp;&nbsp;| &nbsp; up to 5 &nbsp;<img src="./bikePurpleSm.png">&nbsp; &nbsp;|&nbsp;&nbsp; 0 bikes<img src="./bikeRedSm.png"></strong</li></ul>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
