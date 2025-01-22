@@ -1,6 +1,5 @@
 path.leaflet-interactive {
-  animation: crossfade 2s 4 alternate;
-  animation: rotate 3s;
+  animation: crossfade 2s 4 alternate, rotate 3s;
   opacity: 1;
 }
 
