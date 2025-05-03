@@ -35,6 +35,25 @@ img[src="./bike-out.png"] {
   }
 }
 
+path.leaflet-interactive {
+  animation: fade 2s 4 alternate, rotate 3s;
+  opacity: 1;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.5;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .footer {
   padding-bottom: 1rem;
   padding-top: 1.5rem;
