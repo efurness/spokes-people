@@ -115,16 +115,16 @@ const MapView = ({ positions }) => {
               icon={changeIcon}
             ></Marker>
           );
-          /*
-          polygon = (
-            <CircleMarker
-              center={[position.location.lat, position.location.lon]}
-              radius={12}
-              key={`circle_${position.uuid}`}
-              pathOptions={{ color: color }}
-            />
-          );
-		  */
+
+          //     polygon2 = (
+          //       <CircleMarker
+          //         center={[position.location.lat, position.location.lon]}
+          //         radius={12}
+          //         key={`circle_${position.uuid}`}
+          //         pathOptions={{ color: color }}
+          //       />
+          //     );
+          // */
         }
         return (
           <>
