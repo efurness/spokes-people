@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/spokes-people/static/css/main.b732eac1.css",
-    "main.js": "/spokes-people/static/js/main.e04b7654.js",
+    "main.css": "/spokes-people/static/css/main.06acac81.css",
+    "main.js": "/spokes-people/static/js/main.6b632d54.js",
     "index.html": "/spokes-people/index.html",
-    "main.b732eac1.css.map": "/spokes-people/static/css/main.b732eac1.css.map",
-    "main.e04b7654.js.map": "/spokes-people/static/js/main.e04b7654.js.map"
+    "main.06acac81.css.map": "/spokes-people/static/css/main.06acac81.css.map",
+    "main.6b632d54.js.map": "/spokes-people/static/js/main.6b632d54.js.map"
   },
   "entrypoints": [
-    "static/css/main.b732eac1.css",
-    "static/js/main.e04b7654.js"
+    "static/css/main.06acac81.css",
+    "static/js/main.6b632d54.js"
   ]
 }
