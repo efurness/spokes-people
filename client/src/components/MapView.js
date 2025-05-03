@@ -44,12 +44,12 @@ const MapView = ({ positions }) => {
 
   const newBikeIn = new Icon({
     iconUrl: "./bike-in.png",
-    iconSize: [25, 25],
+    iconSize: [35, 35],
   });
 
   const newBikeOut = new Icon({
     iconUrl: "./bike-out.png",
-    iconSize: [25, 25],
+    iconSize: [35, 35],
   });
 
   const handleFavorite = async (event) => {

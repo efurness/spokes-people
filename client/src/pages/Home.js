@@ -86,12 +86,15 @@ export default function Home() {
 
   return (
     <div>
-      <section className="hero has-background-info is-align-items-center">
-        <div className="hero-body">
+      <section className="hero has-background-info is-align-items-center has-background-black-ter">
+        <div className="hero-body ">
           <p className="title has-text-light">
-            Spokes
-            <img src="./coolBike.png" alt="bike" width="80" height="100"></img>
-            Boulder
+            <img
+              src="./coolBike2.png"
+              alt="bike"
+              width="200"
+              height="200"
+            ></img>
           </p>
         </div>
       </section>
@@ -109,7 +112,7 @@ export default function Home() {
           </article>
         </div>
       </div>
-      <footer className="footer has-background-info">
+      <footer className="footer has-background-info has-background-black-ter ">
         <div className="content has-text-centered has-text-light">
           <p>
             CSS by
