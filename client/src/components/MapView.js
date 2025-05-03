@@ -42,6 +42,16 @@ const MapView = ({ positions }) => {
     iconSize: [25, 25],
   });
 
+  const newBikeIn = new Icon({
+    iconUrl: "./bike-in.png",
+    iconSize: [25, 25],
+  });
+
+  const newBikeOut = new Icon({
+    iconUrl: "./bike-out.png",
+    iconSize: [25, 25],
+  });
+
   const handleFavorite = async (event) => {
     event.preventDefault();
     const lat = parseFloat(event.target.dataset.lat);
@@ -87,14 +97,25 @@ const MapView = ({ positions }) => {
         }
 
         if (position.count === "increase" || position.count === "decrease") {
-          let color = "";
+          // let color = "";
+          let changeIcon;
           if (position.count === "increase") {
-            color = "#4fff33";
+            // color = "#4fff33";
+            changeIcon = newBikeIn;
           }
           if (position.count === "decrease") {
-            color = "#ff3368";
+            // color = "#ff3368";
+            changeIcon = newBikeOut;
           }
 
+          polygon = (
+            <Marker
+              position={[position.location.lat, position.location.lon]}
+              key={`marker_${position.uuid}_${Date.now()}`}
+              icon={changeIcon}
+            ></Marker>
+          );
+          /*
           polygon = (
             <CircleMarker
               center={[position.location.lat, position.location.lon]}
@@ -103,6 +124,7 @@ const MapView = ({ positions }) => {
               pathOptions={{ color: color }}
             />
           );
+		  */
         }
         return (
           <>

@@ -1,19 +1,37 @@
-path.leaflet-interactive {
-  animation: fade 2s 4 alternate, rotate 3s;
-  opacity: 1;
+img[src="./bike-in.png"] {
+  animation: move-in 3s forwards, fade-out 5s 5s forwards;
+  pointer-events: none;
 }
 
-@keyframes fade {
+img[src="./bike-out.png"] {
+  animation: move-out 3s forwards, fade-out 5s 5s forwards;
+  pointer-events: none;
+}
+
+@keyframes move-in {
   from {
-    opacity: 0.5;
+    left: -200px;
+  }
+  to {
+    left: 0px;
   }
 }
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+
+@keyframes move-out {
+  from {
+    left: 0px;
   }
-  100% {
-    transform: rotate(360deg);
+  to {
+    left: 200px;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
