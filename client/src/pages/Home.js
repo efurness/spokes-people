@@ -48,7 +48,7 @@ export default function Home() {
         if (
           network.id !== "boulder" &&
           network.id !== "denver" &&
-          network.id !== "colorado springs"
+          network.id !== "manitou-springs"
         )
           return;
 
@@ -129,7 +129,7 @@ export default function Home() {
               {" "}
               &nbsp; Current project by Ellen Furness
             </a>
-            &nbsp; 2024
+            &nbsp; 2025
           </p>
         </div>
       </footer>
