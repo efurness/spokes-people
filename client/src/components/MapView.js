@@ -96,51 +96,36 @@ const MapView = ({ positions }) => {
         }
         if (position.availableBikes >= 6) {
           icon = bikeGreen;
+        }
 
-          if (position.count === "increase" || position.count === "decrease") {
-            let color = "";
-
-            if (position.count === "increase") {
-              color = "#4fff33";
-            }
-
-            if (position.count === "decrease") {
-              color = "#ff3368";
-            }
-
-            if (
-              position.count === "increase" ||
-              position.count === "decrease"
-            ) {
-              let color = "";
-              let changeIcon;
-              if (position.count === "increase") {
-                color = "#4fff33";
-                changeIcon = newBikeIn;
-              }
-              if (position.count === "decrease") {
-                // color = "#ff3368";
-                changeIcon = newBikeOut;
-              }
-
-              polygon = (
-                <Marker
-                  position={[position.location.lat, position.location.lon]}
-                  key={`marker_${position.uuid}_${Date.now()}`}
-                  icon={changeIcon}
-                ></Marker>
-              );
-
-              polygon2 = (
-                <CircleMarker
-                  center={[position.location.lat, position.location.lon]}
-                  radius={12}
-                  key={`circle_${position.uuid}`}
-                  pathOptions={{ color: color }}
-                />
-              );
-            }
+        if (position.count === "increase" || position.count === "decrease") {
+          let color = "";
+          let changeIcon;
+          if (position.count === "increase") {
+            color = "#4fff33";
+            changeIcon = newBikeIn;
           }
+          if (position.count === "decrease") {
+            color = "#ff3368";
+            changeIcon = newBikeOut;
+          }
+
+          polygon = (
+            <Marker
+              position={[position.location.lat, position.location.lon]}
+              key={`marker_${position.uuid}_${Date.now()}`}
+              icon={changeIcon}
+            ></Marker>
+          );
+
+          polygon2 = (
+            <CircleMarker
+              center={[position.location.lat, position.location.lon]}
+              radius={12}
+              key={`circle_${position.uuid}`}
+              pathOptions={{ color: color }}
+            />
+          );
         }
         return (
           <>
