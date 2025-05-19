@@ -115,16 +115,15 @@ export default function Home() {
       <footer className="footer has-background-info has-background-black-ter ">
         <div className="content has-text-centered has-text-light">
           <p>
-            CSS by
-            <strong className="has-text-light"> Bulma</strong> site by{" "}
             <a
               className="has-text-primary"
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              &nbsp; Current project by Ellen Furness
+              &nbsp; Monty-Asp 2025 &copy;
             </a>
-            &nbsp; 2025
+            &nbsp; CSS by
+            <strong className="has-text-light"> Bulma</strong>{" "}
           </p>
         </div>
       </footer>
