@@ -103,7 +103,10 @@ export default function Home() {
         <div className="title is-parent">
           <article className="title is-child notification is-info-light">
             <div className="content">
-              <p className="title ">Find bikes near you!</p>
+              <p className="title ">
+                <img src="./open2.png" alt="open logo"></img>
+                Find bikes near you!{" "}
+              </p>
               <div className="container">
                 {" "}
                 <MapView positions={positions} />
@@ -120,7 +123,7 @@ export default function Home() {
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              &nbsp; Monty-Asp 2025 &copy;
+              &nbsp; Monty-Asp 2025 &copy{" "}
             </a>
             &nbsp; CSS by
             <strong className="has-text-light"> Bulma</strong>{" "}
