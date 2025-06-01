@@ -105,7 +105,7 @@ export default function Home() {
             <div className="content">
               <p className="title ">
                 <img src="./open2.png" alt="open logo"></img>
-                Find bikes near you!{" "}
+                Search bikes!{" "}
               </p>
               <div className="container">
                 {" "}
