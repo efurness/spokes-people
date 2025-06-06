@@ -105,7 +105,7 @@ export default function Home() {
             <div className="content">
               <p className="title ">
                 <img src="./open2.png" alt="open logo"></img>
-                Search bikes!{" "}
+                Search for bikes!{" "}
               </p>
               <div className="container">
                 {" "}
@@ -123,7 +123,7 @@ export default function Home() {
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              &nbsp; Monty-Asp 2025 &copy{" "}
+              &nbsp; Monty-Asp 2025 &copy;{" "}
             </a>
             &nbsp; CSS by
             <strong className="has-text-light"> Bulma</strong>{" "}
