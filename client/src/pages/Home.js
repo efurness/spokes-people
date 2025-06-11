@@ -104,7 +104,7 @@ export default function Home() {
           <article className="title is-child notification is-info-light">
             <div className="content">
               <p className="title ">
-                Search for bikes! <img src="./open2.png" alt="open logo"></img>
+                Search for bikes! <img src="./open3.png" alt="open logo"></img>
               </p>
               <div className="container">
                 {" "}
