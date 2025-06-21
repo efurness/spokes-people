@@ -140,10 +140,10 @@ const MapView = ({ positions }) => {
                   Available bikes: {position.availableBikes}
                   <br />
                   {/* Empty slots: {position.emptySlots}< br /> */}
-                  Latitude: {position.location.lat}
+                  {/* Latitude: {position.location.lat}
                   <br />
                   Longitude: {position.location.lon}
-                  <br />
+                  <br /> */}
                 </h6>
                 {/* {user?.username && (
               <button
