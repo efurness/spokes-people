@@ -102,7 +102,7 @@ const MapView = ({ positions }) => {
           let color = "";
           let changeIcon;
           if (position.count === "increase") {
-            color = "#4fff33";
+            color = "#008080";
             changeIcon = newBikeIn;
           }
           if (position.count === "decrease") {
