@@ -122,7 +122,7 @@ export default function Home() {
               href="https://github.com/efurness/spokes-people.git"
             >
               {" "}
-              &nbsp; Monty-Asp 2025 &copy;{" "}
+              &nbsp; Monty-Asp 2026 &copy;{" "}
             </a>
             &nbsp; CSS by
             <strong className="has-text-light"> Bulma</strong>{" "}
