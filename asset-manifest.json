@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/spokes-people/static/css/main.06acac81.css",
-    "main.js": "/spokes-people/static/js/main.4bc23bd2.js",
+    "main.js": "/spokes-people/static/js/main.742dab5e.js",
     "index.html": "/spokes-people/index.html",
     "main.06acac81.css.map": "/spokes-people/static/css/main.06acac81.css.map",
-    "main.4bc23bd2.js.map": "/spokes-people/static/js/main.4bc23bd2.js.map"
+    "main.742dab5e.js.map": "/spokes-people/static/js/main.742dab5e.js.map"
   },
   "entrypoints": [
     "static/css/main.06acac81.css",
-    "static/js/main.4bc23bd2.js"
+    "static/js/main.742dab5e.js"
   ]
 }
